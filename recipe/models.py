@@ -6,6 +6,8 @@ class Measurement(models.Model):
     Measurments for various ingredients
     """
     MEASUREMENT_CHOICES = (('cups', 'cups'), ('tsp', 'tsp'), ('tbsp', 'tbsp'), ('entire', 'entire'), ('half', 'half'), ('quarter', 'quarter'), )
+    amount = models.DecimalField(required=False)
+    measurement = models.ChoiceField(required=False, choices=MEASUREMENT_CHOICES)
 
 
 class Ingredient(models.Model):
@@ -13,8 +15,6 @@ class Ingredient(models.Model):
     ingredient model
     """
     name = models.CharField()
-    amount = models.DecimalField(required=False)
-    measurement = models.ChoiceField(required=False, choices=MEASUREMENT_CHOICES)
     approximated_cost = models.DecimalField(required=False, decimal_places=2, help_text="in USD")
 
 class Recipe(models.Model):
