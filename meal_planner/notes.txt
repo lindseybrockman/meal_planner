@@ -1,0 +1,50 @@
+How this thaaang gon' work
+
+add a bunch of recipes
+maybe add some pics
+select time frame (1 day, a couple days, a week)
+output grocery list
+
+User Workflow:
+- Setting
+  > User can add a recipe
+  > User can add approximated cost of ingredients
+  > User has a pantry
+
+- Getting
+  > User can ask for a randomized meal plan for a specified time frame (ie day, week)
+  > User can request a meal plan that factors in ingredients in the pantry
+
+Datamodel:
+Recipe
+-title
+-prep time
+-cook time
+-instructions
+-ingredient M2M
+
+Ingredient
+-name
+-measurement M2M
+
+Measurement
+-numeric
+-type
+IE 1 cup, 1.5 tbs
+
+On creation of a recipe, an ingredient is created w/ an association to a measurement
+
+
+
+Meals:
+meals should comprise of a main dish and one or two sides
+
+Timing:
+total time should incorporate prep and cook time
+if a side has a prep time < cook time of the main dish, the total time would be:
+main dish cooktime + main dish prep time + side cook time (cook methods will be shown, user can decide if they can be cooked simultaneously)
+
+Future Development:
+factoring in nutrition info would be awesome
+nutrition info could lead to balanced meal planning
+pantry should be updated when meals are consumed
