@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+from recipe.models import Ingredient
+
+class Pantry(models.Model):
+    ingredients = models.ManyToManyField(Ingredient) 

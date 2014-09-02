@@ -14,6 +14,11 @@ User Workflow:
 - Getting
   > User can ask for a randomized meal plan for a specified time frame (ie day, week)
   > User can request a meal plan that factors in ingredients in the pantry
+  > Grocery list should be emailed to that user
+
+Pantries:
+   One pantry can be shared between multiple users
+   Recipes will be shared among users that share a pantry
 
 Datamodel:
 Recipe
@@ -48,3 +53,16 @@ Future Development:
 factoring in nutrition info would be awesome
 nutrition info could lead to balanced meal planning
 pantry should be updated when meals are consumed
+
+
+
+
+sign up with your email address
+log in
+
+Welcome Back <email>! (Not you?)
+===============================
+Get a meal plan! (would you like us to email this grocery list to you?)  # check ingredients that you need to buy, things in your pantry should be unchecked by default, ability to add additional things to list
+Update your pantry! (you share this pantry with # other users)
+Add a recipe!
+Manage your favorites!  # ok, if you're eating a shared meal, only pick things that BOTH people like
