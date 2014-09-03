@@ -8,7 +8,7 @@ class Chef(models.Model):
     Extends django auth User model
     """
     user = models.OneToOneField(User)
-    pantry = models.ForeignKeyField(Pantry)
+    pantry = models.ForeignKey(Pantry)
 
     """
     Notes:
