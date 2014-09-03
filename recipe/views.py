@@ -1,12 +1,12 @@
 from django.shortcuts import render
 
-from recipe forms import RecipeForm
+from recipe.forms import RecipeForm
 
-def recipe_add(request):
-    form = RecipeForm(request.get('POST'))
+def add(request):
+    form = RecipeForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
     
     context = {'form': form}
-    render(request, 'recipe/add.html', context)
+    return render(request, 'recipe/add.html', context)

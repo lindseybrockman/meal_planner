@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from recipe.models import Ingredient, Measurement, Recipe
+from recipe.models import Ingredient, MeasuredIngredient, Recipe
 
 admin.site.register(Ingredient)
-admin.site.register(Measurement)
+admin.site.register(MeasuredIngredient)
 admin.site.register(Recipe)
