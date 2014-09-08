@@ -1,4 +1,16 @@
 {% extends "meal_planner/base.html" %}
 {% block content %}
-    {{ form.as_p }}
+    <div class="well bs-component">
+    <form class="form-horizontal" method="post">
+        <fieldset>
+        <legend>add a recipe</legend>
+        {% csrf_token %}
+        {{ recipe_form.as_p }}
+        <fieldset>
+            {{ ingredient_formset }}
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+    </fieldset>
+    </div>
 {% endblock content %}

@@ -12,19 +12,6 @@ class Ingredient(models.Model):
         return self.name
 
 
-class MeasuredIngredient(models.Model):
-    """
-    Measurments for various ingredients
-    """
-    MEASUREMENT_CHOICES = (('cups', 'cups'), ('tsp', 'tsp'), ('tbsp', 'tbsp'), ('entire', 'entire'), ('half', 'half'), ('quarter', 'quarter'), )
-    amount = models.DecimalField(blank=True, null=True, decimal_places=2, max_digits=10)
-    measurement = models.CharField(blank=True, null=True, max_length=20, choices=MEASUREMENT_CHOICES)
-    ingredient = models.ForeignKey(Ingredient)
-
-    def __unicode__(self):
-        return "{} {} {}".format(self.amount, self.measurement, self.ingredient.name)
-
-
 class Recipe(models.Model):
     """
     recipe model
@@ -35,8 +22,31 @@ class Recipe(models.Model):
     prep_time = models.IntegerField(default=0, help_text='in minutes')
     cook_time = models.IntegerField(default=0, help_text='in minutes')
     instructions = models.TextField()
-    ingredients = models.ManyToManyField(MeasuredIngredient)
-    chef = models.ForeignKey(User)
+    author = models.ForeignKey(User)
 
     def __unicode__(self):
         return "{} (by {})".format(self.title, self.chef.username)
+
+
+class MeasuredIngredient(models.Model):
+    """
+    Measurments for various ingredients
+    """
+    MEASUREMENT_CHOICES = (
+            ('cups', 'cups'),
+            ('tsp', 'tsp'),
+            ('tbsp', 'tbsp'),
+            ('entire', 'entire'),
+            ('half', 'half'),
+            ('quarter', 'quarter'),
+        )
+    amount = models.DecimalField(blank=True, null=True, decimal_places=2, max_digits=10)
+    measurement = models.CharField(blank=True, null=True, max_length=20, choices=MEASUREMENT_CHOICES)
+    ingredient = models.ForeignKey(Ingredient)
+    recipe = models.ForeignKey(Recipe)
+
+    def __unicode__(self):
+        return "{} {} {}".format(self.amount, self.measurement, self.ingredient.name)
+
+
+

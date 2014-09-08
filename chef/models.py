@@ -10,6 +10,15 @@ class Chef(models.Model):
     user = models.OneToOneField(User)
     pantry = models.ForeignKey(Pantry)
 
+    @staticmethod
+    def get_chef(user):
+        """
+        helper method that returns
+        takes in a User object and
+        returns the Chef object tied
+        to that User
+        """
+        return Chef.objects.get(user=user)
     """
     Notes:
         chefs that share a pantry

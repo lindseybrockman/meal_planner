@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from pantry.models import Pantry
+
+admin.site.register(Pantry)
